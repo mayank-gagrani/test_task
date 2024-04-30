@@ -30,5 +30,20 @@ RSpec.describe TestTaskLogic do
        result = TestTaskLogic.add("1,4,2,5")
        expect(result).to eq(12)
      end
+
+     it 'returns exception for negative numbers' do
+        result = TestTaskLogic.add("1,-2,3,-5,-6")
+        expect(result).to eq("negative numbers not allowed -2, -5, -6")
+     end
+
+     it 'returns 19 for an \n string' do
+       result = TestTaskLogic.add('1\n4,6\n8')
+       expect(result).to eq(19)
+     end
+
+     it 'returns invalid for an empty string' do
+       result = TestTaskLogic.add('1,\n')
+       expect(result).to eq('invalid')
+     end
   end
 end

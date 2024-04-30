@@ -60,5 +60,15 @@ RSpec.describe TestTaskLogic do
        result = TestTaskLogic.add('/[***]\n1***2***3')
        expect(result).to eq(6)
      end
+
+     it 'returns exception for negative numbers' do
+       result = TestTaskLogic.add('1,-2\n,-3,\n')
+       expect(result).to eq("negative numbers not allowed -2, -3")
+     end
+
+     it 'returns sum when string contain multiple delimiters' do
+       result = TestTaskLogic.add('//[*][%]\n1*2%3')
+       expect(result).to eq(6)
+     end
   end
 end

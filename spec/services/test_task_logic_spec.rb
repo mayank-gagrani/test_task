@@ -45,5 +45,20 @@ RSpec.describe TestTaskLogic do
        result = TestTaskLogic.add('1,\n')
        expect(result).to eq('invalid')
      end
+
+     it 'returns sum of number for string with delimeter' do
+       result = TestTaskLogic.add('//;\n1;2;6')
+       expect(result).to eq(9)
+     end
+
+     it 'returns sum of and not include number >1000' do
+       result = TestTaskLogic.add('2,1001')
+       expect(result).to eq(2)
+     end
+
+     it 'returns sum for string contain *' do
+       result = TestTaskLogic.add('/[***]\n1***2***3')
+       expect(result).to eq(6)
+     end
   end
 end
